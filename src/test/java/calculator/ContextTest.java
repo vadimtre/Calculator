@@ -7,15 +7,17 @@ public class ContextTest {
     @org.junit.Test
     public void run() {
         Context context = new Context();
-        int actual = context.run("C2+3=");
-        int expect=5;
-        assertEquals(expect,actual);
 
         assertEquals(0,context.run("C"));
         assertEquals(2,context.run("C2"));
         assertEquals(25,context.run("C25"));
         assertEquals(257452,context.run("C257452"));
         assertEquals(257452,context.run("C257452="));
+
+        int actual = context.run("C2+3=");
+        int expect=5;
+        assertEquals(expect,actual);
+
         assertEquals(777,context.run("C123+654="));
         assertEquals(8,context.run("C2+2*2="));
         assertEquals(10,context.run("C5+="));
@@ -27,5 +29,6 @@ public class ContextTest {
         assertEquals(1,context.run("C9/5="));
         assertEquals(0,context.run("C7575*000="));
         assertEquals(125,context.run("C25+-/*5="));
+        assertEquals(45,context.run("C5+15=c30="));    //1:59:30
     }
 }
